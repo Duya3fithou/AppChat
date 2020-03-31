@@ -12,14 +12,14 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1A8F46D820435838E3EFF067 /* libPods-AppChat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB4E93FF53414FC9D8B49EE /* libPods-AppChat-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* AppChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppChatTests.m */; };
-		5098A2C028E9D54195C3E10A /* libPods-AppChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AA5C162A178EA7F9406429 /* libPods-AppChatTests.a */; };
-		6BBFC74081E63CD8DDF4E081 /* libPods-AppChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 992AFC676C7E63806A79A958 /* libPods-AppChat.a */; };
-		C0FDF01C9CFFA5D5B9DA925A /* libPods-AppChat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C295475C33C9123C3E37E47 /* libPods-AppChat-tvOSTests.a */; };
+		35F595147E8297638DC53742 /* libPods-AppChat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA052F5431BA7DF3FE801B9 /* libPods-AppChat-tvOS.a */; };
+		900DB2846EDB48C974E84D80 /* libPods-AppChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96AF79FF8A2AF7FAF5850610 /* libPods-AppChatTests.a */; };
+		DCA3741C661E6FB8CD1ADCA5 /* libPods-AppChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7CDDFF6D31BCE33DA83C89E /* libPods-AppChat.a */; };
+		E0B623D8D183E8543D40DD81 /* libPods-AppChat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AAEE1FACE5D4B3818BEB38 /* libPods-AppChat-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,7 @@
 		00E356EE1AD99517003FC87E /* AppChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AppChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppChatTests.m; sourceTree = "<group>"; };
-		125023C888960C7E2700CF47 /* Pods-AppChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat.release.xcconfig"; path = "Target Support Files/Pods-AppChat/Pods-AppChat.release.xcconfig"; sourceTree = "<group>"; };
+		017CA16874DC894D11D8C45D /* Pods-AppChat-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOS/Pods-AppChat-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* AppChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppChat/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppChat/AppDelegate.m; sourceTree = "<group>"; };
@@ -52,19 +52,19 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AppChat/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AppChat/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AppChat/main.m; sourceTree = "<group>"; };
-		18A11542BFD0B5CB181375C5 /* Pods-AppChat-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOS/Pods-AppChat-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		21BD16FAEDD6050366633244 /* Pods-AppChat-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOSTests/Pods-AppChat-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		248FA8CCDC64A4D211CBD48B /* Pods-AppChat-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOS/Pods-AppChat-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* AppChat-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppChat-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* AppChat-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppChat-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		35D76849934F528958205436 /* Pods-AppChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChatTests.debug.xcconfig"; path = "Target Support Files/Pods-AppChatTests/Pods-AppChatTests.debug.xcconfig"; sourceTree = "<group>"; };
-		72AA5C162A178EA7F9406429 /* libPods-AppChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C295475C33C9123C3E37E47 /* libPods-AppChat-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChat-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		992AFC676C7E63806A79A958 /* libPods-AppChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6AF8A70BD560235AB73810F /* Pods-AppChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChatTests.release.xcconfig"; path = "Target Support Files/Pods-AppChatTests/Pods-AppChatTests.release.xcconfig"; sourceTree = "<group>"; };
-		BFDBBCB2F5ECB9695BCFE1E6 /* Pods-AppChat-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOSTests/Pods-AppChat-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		CBB4E93FF53414FC9D8B49EE /* libPods-AppChat-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChat-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E340DA9E636FE7C6CC50F624 /* Pods-AppChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat.debug.xcconfig"; path = "Target Support Files/Pods-AppChat/Pods-AppChat.debug.xcconfig"; sourceTree = "<group>"; };
+		3BA052F5431BA7DF3FE801B9 /* libPods-AppChat-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChat-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40159DC7A349D20B601D6934 /* Pods-AppChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat.release.xcconfig"; path = "Target Support Files/Pods-AppChat/Pods-AppChat.release.xcconfig"; sourceTree = "<group>"; };
+		5D55D0588B79FF9FEF4A616D /* Pods-AppChat-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOS/Pods-AppChat-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		75FA8D1275BB0363742FFB25 /* Pods-AppChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat.debug.xcconfig"; path = "Target Support Files/Pods-AppChat/Pods-AppChat.debug.xcconfig"; sourceTree = "<group>"; };
+		86DF6CC35ED0F301EE5E4923 /* Pods-AppChat-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOSTests/Pods-AppChat-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		96AF79FF8A2AF7FAF5850610 /* libPods-AppChatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6725337A80B4B3E7FF41E68 /* Pods-AppChat-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChat-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppChat-tvOSTests/Pods-AppChat-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7CDDFF6D31BCE33DA83C89E /* libPods-AppChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3AAEE1FACE5D4B3818BEB38 /* libPods-AppChat-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppChat-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD2AAF1A51C928689AB48B65 /* Pods-AppChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChatTests.release.xcconfig"; path = "Target Support Files/Pods-AppChatTests/Pods-AppChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		E2BB228C56C863967A91A726 /* Pods-AppChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppChatTests.debug.xcconfig"; path = "Target Support Files/Pods-AppChatTests/Pods-AppChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5098A2C028E9D54195C3E10A /* libPods-AppChatTests.a in Frameworks */,
+				900DB2846EDB48C974E84D80 /* libPods-AppChatTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BBFC74081E63CD8DDF4E081 /* libPods-AppChat.a in Frameworks */,
+				DCA3741C661E6FB8CD1ADCA5 /* libPods-AppChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A8F46D820435838E3EFF067 /* libPods-AppChat-tvOS.a in Frameworks */,
+				35F595147E8297638DC53742 /* libPods-AppChat-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0FDF01C9CFFA5D5B9DA925A /* libPods-AppChat-tvOSTests.a in Frameworks */,
+				E0B623D8D183E8543D40DD81 /* libPods-AppChat-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				992AFC676C7E63806A79A958 /* libPods-AppChat.a */,
-				CBB4E93FF53414FC9D8B49EE /* libPods-AppChat-tvOS.a */,
-				8C295475C33C9123C3E37E47 /* libPods-AppChat-tvOSTests.a */,
-				72AA5C162A178EA7F9406429 /* libPods-AppChatTests.a */,
+				B7CDDFF6D31BCE33DA83C89E /* libPods-AppChat.a */,
+				3BA052F5431BA7DF3FE801B9 /* libPods-AppChat-tvOS.a */,
+				C3AAEE1FACE5D4B3818BEB38 /* libPods-AppChat-tvOSTests.a */,
+				96AF79FF8A2AF7FAF5850610 /* libPods-AppChatTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,16 +185,15 @@
 		CAE6A3F7BF7ADF5A608F5F6F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E340DA9E636FE7C6CC50F624 /* Pods-AppChat.debug.xcconfig */,
-				125023C888960C7E2700CF47 /* Pods-AppChat.release.xcconfig */,
-				248FA8CCDC64A4D211CBD48B /* Pods-AppChat-tvOS.debug.xcconfig */,
-				18A11542BFD0B5CB181375C5 /* Pods-AppChat-tvOS.release.xcconfig */,
-				21BD16FAEDD6050366633244 /* Pods-AppChat-tvOSTests.debug.xcconfig */,
-				BFDBBCB2F5ECB9695BCFE1E6 /* Pods-AppChat-tvOSTests.release.xcconfig */,
-				35D76849934F528958205436 /* Pods-AppChatTests.debug.xcconfig */,
-				A6AF8A70BD560235AB73810F /* Pods-AppChatTests.release.xcconfig */,
+				75FA8D1275BB0363742FFB25 /* Pods-AppChat.debug.xcconfig */,
+				40159DC7A349D20B601D6934 /* Pods-AppChat.release.xcconfig */,
+				5D55D0588B79FF9FEF4A616D /* Pods-AppChat-tvOS.debug.xcconfig */,
+				017CA16874DC894D11D8C45D /* Pods-AppChat-tvOS.release.xcconfig */,
+				B6725337A80B4B3E7FF41E68 /* Pods-AppChat-tvOSTests.debug.xcconfig */,
+				86DF6CC35ED0F301EE5E4923 /* Pods-AppChat-tvOSTests.release.xcconfig */,
+				E2BB228C56C863967A91A726 /* Pods-AppChatTests.debug.xcconfig */,
+				DD2AAF1A51C928689AB48B65 /* Pods-AppChatTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -205,7 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppChatTests" */;
 			buildPhases = (
-				8051E77A40E883A23E211011 /* [CP] Check Pods Manifest.lock */,
+				202572A38C8ECBBF9757DDA2 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -224,7 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppChat" */;
 			buildPhases = (
-				1FBFDE22355DB97B0FB050E1 /* [CP] Check Pods Manifest.lock */,
+				0DB31015D6A8218B5B7B0F33 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -244,7 +243,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppChat-tvOS" */;
 			buildPhases = (
-				CB40323E2F8B21F047D531A9 /* [CP] Check Pods Manifest.lock */,
+				62901E02C597BFB1B009F769 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -264,7 +263,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppChat-tvOSTests" */;
 			buildPhases = (
-				CEDDCF990DA77EBC9D570518 /* [CP] Check Pods Manifest.lock */,
+				826AF1BA525B26DA7C7B01DD /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -290,7 +289,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = A934T35MUC;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = A934T35MUC;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -308,6 +311,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -373,7 +377,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		1FBFDE22355DB97B0FB050E1 /* [CP] Check Pods Manifest.lock */ = {
+		0DB31015D6A8218B5B7B0F33 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,21 +399,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		8051E77A40E883A23E211011 /* [CP] Check Pods Manifest.lock */ = {
+		202572A38C8ECBBF9757DDA2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,7 +421,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CB40323E2F8B21F047D531A9 /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		62901E02C597BFB1B009F769 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -453,7 +457,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CEDDCF990DA77EBC9D570518 /* [CP] Check Pods Manifest.lock */ = {
+		826AF1BA525B26DA7C7B01DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -580,9 +584,11 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35D76849934F528958205436 /* Pods-AppChatTests.debug.xcconfig */;
+			baseConfigurationReference = E2BB228C56C863967A91A726 /* Pods-AppChatTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = A934T35MUC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -603,10 +609,12 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6AF8A70BD560235AB73810F /* Pods-AppChatTests.release.xcconfig */;
+			baseConfigurationReference = DD2AAF1A51C928689AB48B65 /* Pods-AppChatTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = A934T35MUC;
 				INFOPLIST_FILE = AppChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -623,11 +631,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E340DA9E636FE7C6CC50F624 /* Pods-AppChat.debug.xcconfig */;
+			baseConfigurationReference = 75FA8D1275BB0363742FFB25 /* Pods-AppChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = A934T35MUC;
 				INFOPLIST_FILE = AppChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -643,10 +652,11 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 125023C888960C7E2700CF47 /* Pods-AppChat.release.xcconfig */;
+			baseConfigurationReference = 40159DC7A349D20B601D6934 /* Pods-AppChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A934T35MUC;
 				INFOPLIST_FILE = AppChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -662,7 +672,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 248FA8CCDC64A4D211CBD48B /* Pods-AppChat-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 5D55D0588B79FF9FEF4A616D /* Pods-AppChat-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -690,7 +700,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18A11542BFD0B5CB181375C5 /* Pods-AppChat-tvOS.release.xcconfig */;
+			baseConfigurationReference = 017CA16874DC894D11D8C45D /* Pods-AppChat-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -718,7 +728,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21BD16FAEDD6050366633244 /* Pods-AppChat-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = B6725337A80B4B3E7FF41E68 /* Pods-AppChat-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -745,7 +755,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFDBBCB2F5ECB9695BCFE1E6 /* Pods-AppChat-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 86DF6CC35ED0F301EE5E4923 /* Pods-AppChat-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

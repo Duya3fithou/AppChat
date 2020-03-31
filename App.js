@@ -1,12 +1,16 @@
 console.disableYellowBox = true;
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import JoinRoomScreen from './src/screens/JoinRoom';
-import ChatRoomScreen from './src/screens/ChatRoom';
-const JoinStack = createStackNavigator({JoinRoom: JoinRoomScreen});
-const ChatRoomStack = createStackNavigator({ChatRoom: ChatRoomScreen});
+import Chat from './src/screens/Chat';
+import Login from './src/screens/Login';
+import CreateAccount from './src/screens/CreateAccount';
+const JoinStack = createStackNavigator({
+  JoinRoom: Login,
+  CreateAccount: CreateAccount,
+});
+const ChatRoomStack = createStackNavigator({ChatRoom: Chat});
 // eslint-disable-next-line no-undef
-export default (App = createAppContainer(
+export default App = createAppContainer(
   createSwitchNavigator(
     {
       Join: {
@@ -20,4 +24,4 @@ export default (App = createAppContainer(
       initialRouteName: 'Join',
     },
   ),
-));
+);
