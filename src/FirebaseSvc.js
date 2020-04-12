@@ -2,6 +2,7 @@
 /* eslint-disable no-alert */
 import firebase from 'firebase';
 import moment from 'moment';
+import uuid from 'uuid';
 class FirebaseSvc {
   constructor() {
     if (!firebase.apps.length) {
@@ -90,10 +91,10 @@ class FirebaseSvc {
       return new Promise((resolve, reject) => {
         task.on(
           'state_changed',
-          () => {
-            /* noop but you can track the progress here */
+          () => {},
+          error => {
+            console.log(error);
           },
-          reject /* this is where you would put an error callback! */,
           () => resolve(task.snapshot.downloadURL),
         );
       });
@@ -145,13 +146,12 @@ class FirebaseSvc {
   parse = snapshot => {
     const {createdAt, text, user} = snapshot.val();
     const {key: id} = snapshot;
-    const {key: _id} = snapshot; //needed for giftedchat
-    const timestamp = moment(createdAt).format('MM/DD HH:mm a');
+    const {key: _id} = snapshot;
 
     const message = {
       id,
       _id,
-      timestamp,
+      createdAt,
       text,
       user,
     };

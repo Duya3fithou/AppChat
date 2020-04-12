@@ -27,12 +27,13 @@ class Login extends React.Component {
   };
 
   loginSuccess = () => {
-    console.log('login successful, navigate to chat.');
-    this.props.navigation.navigate('ChatRoom', {
+    const info = {
       name: this.state.name,
       email: this.state.email,
       avatar: this.state.avatar,
-    });
+    };
+    console.log('login successful, navigate to chat.');
+    this.props.navigation.navigate('Profile', {info});
   };
 
   loginFailed = () => {
