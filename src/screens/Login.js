@@ -26,7 +26,19 @@ class Login extends React.Component {
     avatar: '',
   };
 
-  // using Fire.js
+  loginSuccess = () => {
+    console.log('login successful, navigate to chat.');
+    this.props.navigation.navigate('ChatRoom', {
+      name: this.state.name,
+      email: this.state.email,
+      avatar: this.state.avatar,
+    });
+  };
+
+  loginFailed = () => {
+    console.log('login failed ***');
+    alert('Login failure. Please tried again.');
+  };
   onPressLogin = async () => {
     console.log('pressing login... email:' + this.state.email);
     const user = {
@@ -41,19 +53,6 @@ class Login extends React.Component {
       this.loginSuccess,
       this.loginFailed,
     );
-  };
-
-  loginSuccess = () => {
-    console.log('login successful, navigate to chat.');
-    this.props.navigation.navigate('ChatRoom', {
-      name: this.state.name,
-      email: this.state.email,
-      avatar: this.state.avatar,
-    });
-  };
-  loginFailed = () => {
-    console.log('login failed ***');
-    alert('Login failure. Please tried again.');
   };
 
   onChangeTextEmail = email => this.setState({email});

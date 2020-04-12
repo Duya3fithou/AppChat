@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-alert */
 import firebase from 'firebase';
+import moment from 'moment';
 class FirebaseSvc {
   constructor() {
     if (!firebase.apps.length) {
@@ -142,10 +143,10 @@ class FirebaseSvc {
   }
 
   parse = snapshot => {
-    const {timestamp: numberStamp, text, user} = snapshot.val();
+    const {createdAt, text, user} = snapshot.val();
     const {key: id} = snapshot;
     const {key: _id} = snapshot; //needed for giftedchat
-    const timestamp = new Date(numberStamp);
+    const timestamp = moment(createdAt).format('MM/DD HH:mm a');
 
     const message = {
       id,
@@ -163,10 +164,6 @@ class FirebaseSvc {
       .on('child_added', snapshot => callback(this.parse(snapshot)));
   };
 
-  get timestamp() {
-    return firebase.database.ServerValue.TIMESTAMP;
-  }
-
   // send the message to the Backend
   send = messages => {
     for (let i = 0; i < messages.length; i++) {
@@ -174,7 +171,7 @@ class FirebaseSvc {
       const message = {
         text,
         user,
-        createdAt: this.timestamp,
+        createdAt: new Date().toString(),
       };
       this.ref.push(message);
     }

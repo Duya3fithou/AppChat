@@ -1,18 +1,19 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable no-alert */
 import React from 'react';
-import {PERMISSIONS} from 'react-native-permissions';
+import {check, PERMISSIONS, RESULTS} from 'react-native-permissions';
 import {
   StyleSheet,
   Text,
   TextInput,
   View,
-  Button,
-  ImageEditor,
+  PermissionsAndroid,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import ImageEditor from '@react-native-community/image-editor';
 import firebaseSvc from '../FirebaseSvc';
-
 class CreateAccount extends React.Component {
   static navigationOptions = {
     title: 'Create account',
@@ -23,6 +24,8 @@ class CreateAccount extends React.Component {
     email: 'Duya3@gmail.com',
     password: 'Duymeo11',
     avatar: '',
+    pickerResult: null,
+    response: null,
   };
 
   onPressCreate = async () => {
@@ -45,56 +48,111 @@ class CreateAccount extends React.Component {
   onChangeTextName = name => this.setState({name});
 
   onImageUpload = async () => {
-    const {status: cameraRollPerm} = await PERMISSIONS.askAsync(
-      PERMISSIONS.CAMERA_ROLL,
-    );
+    const {pickerResult} = this.state;
+    //const {status: cameraRollPerm} = await PERMISSIONS(PERMISSIONS.CAMERA_ROLL);
     try {
-      // only if user allows permission to camera roll
-      if (cameraRollPerm === 'granted') {
-        console.log('choosing image granted...');
-        let pickerResult = await ImagePicker.launchImageLibraryAsync({
-          allowsEditing: true,
-          aspect: [4, 3],
-        });
-        console.log(
-          'ready to upload... pickerResult json:' +
-            JSON.stringify(pickerResult),
-        );
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        {
+          title: 'Chat App Camera Roll Permission',
+          message: 'Chat App needs access to your camera ',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        const options = {
+          title: 'Select Avatar',
+          customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
+          storageOptions: {
+            skipBackup: true,
+            path: 'images',
+          },
+        };
+        ImagePicker.showImagePicker(options, response => {
+          console.log('Response = ', response);
 
-        var wantedMaxSize = 150;
-        var rawheight = pickerResult.height;
-        var rawwidth = pickerResult.width;
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          } else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          } else {
+            const source = {uri: response.uri};
 
-        var ratio = rawwidth / rawheight;
-        var wantedwidth = wantedMaxSize;
-        var wantedheight = wantedMaxSize / ratio;
-        // check vertical or horizontal
-        if (rawheight > rawwidth) {
-          wantedwidth = wantedMaxSize * ratio;
-          wantedheight = wantedMaxSize;
-        }
-        console.log('scale image to x:' + wantedwidth + ' y:' + wantedheight);
-        let resizedUri = await new Promise((resolve, reject) => {
-          ImageEditor.cropImage(
-            pickerResult.uri,
-            {
-              offset: {x: 0, y: 0},
-              size: {width: pickerResult.width, height: pickerResult.height},
-              displaySize: {width: wantedwidth, height: wantedheight},
-              resizeMode: 'contain',
-            },
-            uri => resolve(uri),
-            () => reject(),
-          );
+            // You can also display the image using data:
+            // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+            this.setState(
+              {
+                pickerResult: source,
+                response,
+              },
+              async () => {
+                var wantedMaxSize = 150;
+                var rawheight = response.height;
+                var rawwidth = response.width;
+
+                var ratio = rawwidth / rawheight;
+                var wantedwidth = wantedMaxSize;
+                var wantedheight = wantedMaxSize / ratio;
+                // check vertical or horizontal
+                if (rawheight > rawwidth) {
+                  wantedwidth = wantedMaxSize * ratio;
+                  wantedheight = wantedMaxSize;
+                }
+                console.log(
+                  'scale image to x:' + wantedwidth + ' y:' + wantedheight,
+                );
+                try {
+                  // let resizedUri = new Promise((resolve, reject) => {
+                  //   ImageEditor.cropImage(
+                  //     response.uri,
+                  //     {
+                  //       offset: {x: 0, y: 0},
+                  //       size: {
+                  //         width: response.width,
+                  //         height: response.height,
+                  //       },
+                  //       displaySize: {width: wantedwidth, height: wantedheight},
+                  //       resizeMode: 'contain',
+                  //     },
+                  //     uri => resolve(uri),
+                  //     () => reject(),
+                  //   );
+                  // });
+                  let resizedUri = await ImageEditor.cropImage(response.uri, {
+                    offset: {x: 0, y: 0},
+                    size: {
+                      width: response.width,
+                      height: response.height,
+                    },
+                    displaySize: {width: wantedwidth, height: wantedheight},
+                    resizeMode: 'contain',
+                  });
+                  let uploadUrl = await firebaseSvc.uploadImage(resizedUri);
+                  //let uploadUrl = await firebaseSvc.uploadImageAsync(resizedUri);
+
+                  await this.setState({avatar: uploadUrl});
+                  console.log(' - await upload successful url:' + uploadUrl);
+                  console.log(
+                    ' - await upload successful avatar state:' +
+                      this.state.avatar,
+                  );
+                  await firebaseSvc.updateAvatar(uploadUrl); //might failed
+                  console.log('uploadUrl: ', uploadUrl);
+                } catch (err) {
+                  console.log('err:', err);
+                }
+              },
+            );
+          }
         });
-        let uploadUrl = await firebaseSvc.uploadImage(resizedUri);
-        //let uploadUrl = await firebaseSvc.uploadImageAsync(resizedUri);
-        await this.setState({avatar: uploadUrl});
-        console.log(' - await upload successful url:' + uploadUrl);
-        console.log(
-          ' - await upload successful avatar state:' + this.state.avatar,
-        );
-        await firebaseSvc.updateAvatar(uploadUrl); //might failed
+      } else {
+        alert('denie');
       }
     } catch (err) {
       console.log('onImageUpload error:' + err.message);

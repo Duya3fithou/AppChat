@@ -1,7 +1,6 @@
 import React from 'react';
 import {GiftedChat} from 'react-native-gifted-chat'; // 0.3.0
 import PropTypes from 'prop-types';
-
 import firebaseSvc from '../FirebaseSvc';
 
 class Chat extends React.Component {
@@ -19,8 +18,8 @@ class Chat extends React.Component {
   get user() {
     return {
       //name: this.props.navigation?.state?.params?.name,
-     // email: this.props.navigation?.state?.params?.email,
-     // avatar: this.props.navigation?.state?.params?.avatar,
+      //email: this.props.navigation?.state?.params?.email,
+      //avatar: this.props.navigation?.state?.params?.avatar,
       id: firebaseSvc.uid,
       _id: firebaseSvc.uid, // need for gifted-chat
     };
@@ -33,6 +32,8 @@ class Chat extends React.Component {
         messages={this.state.messages}
         onSend={firebaseSvc.send}
         user={this.user}
+        scrollToBottom={true}
+        isTyping={true}
       />
     );
   }
