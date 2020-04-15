@@ -24,6 +24,7 @@ export default class Profile extends React.Component {
     avatar: '',
     pickerResult: null,
     response: null,
+    isHide: true,
   };
 
   onImageUpload = async () => {
@@ -92,7 +93,10 @@ export default class Profile extends React.Component {
                     ' - await upload successful avatar state:' +
                       this.state.avatar,
                   );
-                  await firebaseSvc.updateAvatar(uploadUrl); //might failed
+                  await firebaseSvc.updateAvatar(uploadUrl);
+                  this.setState({
+                    isHide: false,
+                  }); //might failed
                 } catch (err) {
                   console.log('err:', err);
                 }
@@ -111,20 +115,12 @@ export default class Profile extends React.Component {
 
   _logout = async user => {
     await firebaseSvc.onLogout(user);
+    this.props.navigation.navigate('JoinRoom');
   };
 
-  render() {
-    const user = {
-      
-    }
-    return (
-      <View
-        style={{alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
-        <TouchableOpacity onPress={this.onImageUpload}>
-          <View style={styles.buttonLogin}>
-            <Text style={styles.textLogin}>Upload avatar</Text>
-          </View>
-        </TouchableOpacity>
+  renderButton = () => {
+    if (this.state.isHide === false) {
+      return (
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.navigate('ChatRoom123', {
@@ -136,6 +132,36 @@ export default class Profile extends React.Component {
             <Text style={styles.textLogin}>Goto chat</Text>
           </View>
         </TouchableOpacity>
+      );
+    }
+    if (this.state.isHide === true) {
+      return <View />;
+    }
+  };
+
+  render() {
+    const user = {};
+    return (
+      <View style={{alignItems: 'center', flex: 1}}>
+        <View style={{marginVertical: 15}}>
+          <Text style={{fontSize: 16}}>
+            Vui lòng upload avatar trước khi vào app
+          </Text>
+        </View>
+
+        <TouchableOpacity onPress={this.onImageUpload}>
+          <View style={styles.buttonLogin}>
+            <Text style={styles.textLogin}>Upload avatar</Text>
+          </View>
+        </TouchableOpacity>
+        {this.renderButton()}
+        <View style={{marginTop: 300}}>
+          <TouchableOpacity onPress={this._logout}>
+            <View style={styles.buttonLogout}>
+              <Text style={styles.textLogin}>Logout</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -168,6 +194,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#2196F3',
     margin: 10,
     marginBottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
+  buttonLogout: {
+    width: 300,
+    height: 40,
+    backgroundColor: '#2196F3',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,

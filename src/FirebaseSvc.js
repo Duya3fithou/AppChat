@@ -125,7 +125,7 @@ class FirebaseSvc {
       .auth()
       .signOut()
       .then(function() {
-        console.log('Sign-out successful.');
+        alert('Sign-out successful.');
       })
       .catch(function(error) {
         console.log('An error happened when signing out');
