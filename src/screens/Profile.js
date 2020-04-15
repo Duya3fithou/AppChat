@@ -61,10 +61,6 @@ export default class Profile extends React.Component {
             console.log('User tapped custom button: ', response.customButton);
           } else {
             const source = {uri: response.uri};
-
-            // You can also display the image using data:
-            // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-
             this.setState(
               {
                 pickerResult: source,
@@ -87,34 +83,16 @@ export default class Profile extends React.Component {
                   'scale image to x:' + wantedwidth + ' y:' + wantedheight,
                 );
                 try {
-                  // let resizedUri = new Promise((resolve, reject) => {
-                  //   ImageEditor.cropImage(
-                  //     response.uri,
-                  //     {
-                  //       offset: {x: 0, y: 0},
-                  //       size: {
-                  //         width: response.width,
-                  //         height: response.height,
-                  //       },
-                  //       displaySize: {width: wantedwidth, height: wantedheight},
-                  //       resizeMode: 'contain',
-                  //     },
-                  //     uri => resolve(uri),
-                  //     () => reject(),
-                  //   );
-                  //   console.log('resizedUri:', resizedUri);
                   // });
                   let uploadUrl = await firebaseSvc.uploadImage(response.uri);
-                  console.log('response.uri: ', response.uri);
-                  console.log('uploadUrl:', uploadUrl);
+                  // console.log('response.uri: ', response.uri);
                   await this.setState({avatar: uploadUrl});
-                  console.log(' - await upload successful url:' + uploadUrl);
+                  // console.log(' - await upload successful url:' + uploadUrl);
                   console.log(
                     ' - await upload successful avatar state:' +
                       this.state.avatar,
                   );
                   await firebaseSvc.updateAvatar(uploadUrl); //might failed
-                  console.log('uploadUrl: ', uploadUrl);
                 } catch (err) {
                   console.log('err:', err);
                 }
@@ -130,12 +108,15 @@ export default class Profile extends React.Component {
       alert('Upload image error:' + err.message);
     }
   };
-  componentDidMount() {
-    console.log('cc:', this.props.navigation.getParam('info'));
-  }
+
+  _logout = async user => {
+    await firebaseSvc.onLogout(user);
+  };
 
   render() {
-    //const {name, email, avatar} = this.props.navigation.getParam('info');
+    const user = {
+      
+    }
     return (
       <View
         style={{alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
@@ -148,6 +129,7 @@ export default class Profile extends React.Component {
           onPress={() => {
             this.props.navigation.navigate('ChatRoom123', {
               info: this.props.navigation.getParam('info'),
+              avatar: this.state.avatar,
             });
           }}>
           <View style={styles.buttonLogin}>

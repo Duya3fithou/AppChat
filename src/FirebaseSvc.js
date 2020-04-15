@@ -87,16 +87,13 @@ class FirebaseSvc {
         .ref('avatar')
         .child(uuid.v4());
       const task = ref.put(blob);
-
+      console.log('ahgfkahsgfhg');
       return new Promise((resolve, reject) => {
-        task.on(
-          'state_changed',
-          () => {},
-          error => {
-            console.log(error);
-          },
-          () => resolve(task.snapshot.downloadURL),
+        console.log('111111111');
+        task.on('state_changed', () => {}, reject, () =>
+          resolve(task.snapshot.ref.getDownloadURL()),
         );
+       // console.log(resolve(task.snapshot.downloadURL));
       });
     } catch (err) {
       console.log('uploadImage try/catch error: ' + err.message); //Cannot load an empty url

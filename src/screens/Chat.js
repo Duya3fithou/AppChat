@@ -19,14 +19,14 @@ class Chat extends React.Component {
     return {
       name: this.props.navigation?.getParam('info')?.name,
       email: this.props.navigation?.getParam('info')?.email,
-      avatar: this.props.navigation?.getParam('info')?.avatar,
+      avatar: this.props.navigation?.getParam('avatar'),
       id: firebaseSvc.uid,
       _id: firebaseSvc.uid, // need for gifted-chat
     };
   }
 
   render() {
-    console.log(this.state.messages)
+    console.log(this.props.navigation?.getParam('info'));
     return (
       <GiftedChat
         messages={this.state.messages}
