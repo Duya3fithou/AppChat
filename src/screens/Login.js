@@ -20,9 +20,9 @@ class Login extends React.Component {
   };
 
   state = {
-    name: 'Duy',
-    email: 'Duya3@gmail.com',
-    password: 'Duymeo11',
+    name: '',
+    email: '',
+    password: '',
     avatar: '',
   };
 
