@@ -1,37 +1,80 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 console.disableYellowBox = true;
+import React from 'react';
+import {View, Image} from 'react-native';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 import Chat from './src/screens/Chat';
 import Login from './src/screens/Login';
 import Profile from './src/screens/Profile';
 import CreateAccount from './src/screens/CreateAccount';
-const JoinStack = createStackNavigator({
-  JoinRoom: Login,
-  CreateAccount: CreateAccount,
-});
-const ChatRoom = createStackNavigator(
+import icon from './src/Assets/icon/icon';
+import Room from './src/screens/Room';
+const JoinStack = createStackNavigator(
   {
-    Profile,
-    ChatRoom123: Chat,
+    JoinRoom: Login,
+    CreateAccount: CreateAccount,
   },
   {
-    initialRouteName: 'Profile',
+    navigationOptions: ({navigation}) => ({
+      tabBarVisible: false,
+    }),
   },
 );
-export default (App = createAppContainer(
-  createSwitchNavigator(
-    {
-      Join: {
-        screen: JoinStack,
+const ChatRoom = createStackNavigator({
+  Room,
+  ChatRoom123: Chat,
+});
+
+const TabNavigator = createBottomTabNavigator(
+  {
+    Profile: Profile,
+    Chatting: ChatRoom,
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({focused, tintColor}) => {
+        const {routeName} = navigation.state;
+
+        if (routeName === 'Profile') {
+          return focused ? (
+            <Image source={icon.onPersonal} style={{width: 25, height: 25}} />
+          ) : (
+            <Image source={icon.inPersonal} style={{width: 25, height: 25}} />
+          );
+        }
+        if (routeName === 'Chatting') {
+          return focused ? (
+            <View style={{width: 25, height: 25}}>
+              <Image source={icon.onChatting} style={{width: 25, height: 25}} />
+            </View>
+          ) : (
+            <View style={{width: 25, height: 25}}>
+              <Image source={icon.inChatting} style={{width: 25, height: 25}} />
+            </View>
+          );
+        }
       },
-      ChatRoom: {
-        screen: ChatRoom,
-      },
+    }),
+    tabBarOptions: {
+      activeTintColor: '#2196F3',
+      inactiveTintColor: '#fff',
     },
-    {
-      initialRouteName: 'Join',
-    },
-  ),
-));
+  },
+);
+const Switch = createSwitchNavigator(
+  {
+    Join: JoinStack,
+    TabNavigator,
+  },
+  {
+    initialRouteName: 'Join',
+  },
+);
+const App = createAppContainer(Switch);
+export default App;

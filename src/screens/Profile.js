@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import ImageEditor from '@react-native-community/image-editor';
-import firebaseSvc from '../FirebaseSvc';
+import FirebaseSvc from '../FirebaseSvc';
 export default class Profile extends React.Component {
   static navigationOptions = {
     title: 'Profile',
@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
                 );
                 try {
                   // });
-                  let uploadUrl = await firebaseSvc.uploadImage(response.uri);
+                  let uploadUrl = await FirebaseSvc.uploadImage(response.uri);
                   // console.log('response.uri: ', response.uri);
                   await this.setState({avatar: uploadUrl});
                   // console.log(' - await upload successful url:' + uploadUrl);
@@ -93,7 +93,7 @@ export default class Profile extends React.Component {
                     ' - await upload successful avatar state:' +
                       this.state.avatar,
                   );
-                  await firebaseSvc.updateAvatar(uploadUrl);
+                  await FirebaseSvc.updateAvatar(uploadUrl);
                   this.setState({
                     isHide: false,
                   }); //might failed
@@ -114,38 +114,23 @@ export default class Profile extends React.Component {
   };
 
   _logout = async user => {
-    await firebaseSvc.onLogout(user);
+    await FirebaseDB.onLogout(user);
     this.props.navigation.navigate('JoinRoom');
-  };
-
-  renderButton = () => {
-    if (this.state.isHide === false) {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            this.props.navigation.navigate('ChatRoom123', {
-              info: this.props.navigation.getParam('info'),
-              avatar: this.state.avatar,
-            });
-          }}>
-          <View style={styles.buttonLogin}>
-            <Text style={styles.textLogin}>Goto chat</Text>
-          </View>
-        </TouchableOpacity>
-      );
-    }
-    if (this.state.isHide === true) {
-      return <View />;
-    }
   };
 
   render() {
     const user = {};
     return (
       <View style={{alignItems: 'center', flex: 1}}>
-        <View style={{marginVertical: 15}}>
+        <View
+          style={{
+            marginVertical: 15,
+            paddingHorizontal: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <Text style={{fontSize: 16}}>
-            Vui lòng upload avatar trước khi vào app
+            Bạn nên đặt một ảnh đại diện để mọi người nhận ra bạn dễ dàng hơn
           </Text>
         </View>
 
@@ -154,7 +139,18 @@ export default class Profile extends React.Component {
             <Text style={styles.textLogin}>Upload avatar</Text>
           </View>
         </TouchableOpacity>
-        {this.renderButton()}
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate('Room', {
+              info: this.props.navigation.getParam('info'),
+              avatar: this.state.avatar,
+            });
+          }}>
+          <View style={styles.buttonLogin}>
+            <Text style={styles.textLogin}>Skip</Text>
+          </View>
+        </TouchableOpacity>
+
         <View style={{marginTop: 300}}>
           <TouchableOpacity onPress={this._logout}>
             <View style={styles.buttonLogout}>

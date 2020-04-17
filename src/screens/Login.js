@@ -9,15 +9,16 @@ import {
   Button,
   ImageEditor,
 } from 'react-native';
-import firebaseSvc from '../FirebaseSvc';
+import FirebaseSvc from '../FirebaseSvc';
 import firebase from 'firebase';
 import {auth, initializeApp, storage} from 'firebase';
 import uuid from 'uuid';
 
 class Login extends React.Component {
-  static navigationOptions = {
-    title: 'Login',
-  };
+  // static navigationOptions = {
+  //   title: 'Login',
+  //   tabBarVisible: false,
+  // };
 
   state = {
     name: 'Duy',
@@ -49,7 +50,7 @@ class Login extends React.Component {
       avatar: this.state.avatar,
     };
 
-    const response = firebaseSvc.login(
+    const response = FirebaseSvc.login(
       user,
       this.loginSuccess,
       this.loginFailed,

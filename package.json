@@ -28,6 +28,7 @@
     "react-native-uuid": "^1.4.9",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.3",
+    "react-navigation-tabs": "^2.8.11",
     "yarn": "^1.21.1"
   },
   "devDependencies": {

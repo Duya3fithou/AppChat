@@ -93,7 +93,7 @@ class FirebaseSvc {
         task.on('state_changed', () => {}, reject, () =>
           resolve(task.snapshot.ref.getDownloadURL()),
         );
-       // console.log(resolve(task.snapshot.downloadURL));
+        // console.log(resolve(task.snapshot.downloadURL));
       });
     } catch (err) {
       console.log('uploadImage try/catch error: ' + err.message); //Cannot load an empty url
