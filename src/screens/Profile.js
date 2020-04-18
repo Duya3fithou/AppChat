@@ -4,24 +4,30 @@
 /* eslint-disable no-alert */
 import React from 'react';
 import {
-  StyleSheet,
+  SafeAreaView,
   Text,
   TextInput,
   View,
   PermissionsAndroid,
+  Dimensions,
   TouchableOpacity,
-  Platform,
+  TouchableHighlight,
+  Image,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import FirebaseSvc from '../FirebaseSvc';
 import AsyncStorage from '@react-native-community/async-storage';
+import {ScaledSheet} from 'react-native-size-matters';
+const {width, height} = Dimensions.get('window');
+const link =
+  'https://firebasestorage.googleapis.com/v0/b/appchat-11.appspot.com/o/avatar%2F04bbb3c3-b564-4158-8dcc-3c44d1563842?alt=media&token=fa66b040-2e8f-426d-be98-fdfb29af9487';
 export default class Profile extends React.Component {
   static navigationOptions = {
     title: 'Profile',
   };
 
   state = {
-    avatar: '',
+    avatar: link,
     pickerResult: null,
     response: null,
     isHide: true,
@@ -131,95 +137,157 @@ export default class Profile extends React.Component {
   };
 
   render() {
-    const user = {};
+    console.log(this.props);
     return (
-      <View style={{alignItems: 'center', flex: 1}}>
-        <View
-          style={{
-            marginVertical: 15,
-            paddingHorizontal: 20,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{fontSize: 16}}>
-            Bạn nên đặt một ảnh đại diện để mọi người nhận ra bạn dễ dàng hơn
-          </Text>
-        </View>
-
-        <TouchableOpacity onPress={this.onImageUpload}>
-          <View style={styles.buttonLogin}>
-            <Text style={styles.textLogin}>Upload avatar</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            this.props.navigation.navigate('Room', {
-              info: this.props.navigation.getParam('info'),
-              avatar: this.state.avatar,
-            });
-          }}>
-          <View style={styles.buttonLogin}>
-            <Text style={styles.textLogin}>{this._text()}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <View style={{marginTop: 300}}>
-          <TouchableOpacity onPress={this._logout}>
-            <View style={styles.buttonLogout}>
-              <Text style={styles.textLogin}>Logout</Text>
+      <SafeAreaView>
+        <View style={styles.wrapper_all}>
+          <View style={styles.wrapper_header}>
+            <View style={styles.wrapper_text_header}>
+              <Text style={styles.text_header}>Profile</Text>
+              <View style={styles.wrapper_info}>
+                <Image
+                  source={{uri: `${this.state.avatar}`}}
+                  style={styles.avatar}
+                />
+                <View style={styles.wrapper_ic_edit}>
+                  <TouchableOpacity onPress={this.onImageUpload}>
+                    <Image
+                      source={require('../Assets/icon/ic_create.png')}
+                      style={styles.ic_edit}
+                    />
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.wrapper_text}>
+                  <Text style={styles.text_hello}>Hello</Text>
+                  <Text style={styles.user_name}>
+                    {this.props.navigation.state.params.info.name}
+                  </Text>
+                </View>
+              </View>
             </View>
+          </View>
+
+          <TouchableOpacity
+            style={styles.goto_chat}
+            onPress={() => {
+              this.props.navigation.navigate('Room', {
+                info: this.props.navigation.getParam('info'),
+                avatar: this.state.avatar,
+              });
+            }}>
+            <Text style={styles.text_goto_chat}>Enjoy chat now</Text>
+            <Image
+              source={require('../Assets/icon/rightArrow.png')}
+              style={styles.ic_arrow}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.wrapper_logout}
+            onPress={this._logout}>
+            <Text style={styles.text_signout}>Sign out</Text>
+            <Image
+              source={require('../Assets/icon/rightArrow.png')}
+              style={styles.ic_arrow}
+            />
           </TouchableOpacity>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
 
-const offset = 16;
-const styles = StyleSheet.create({
-  title: {
-    marginTop: offset,
-    marginLeft: offset,
-    fontSize: offset,
+const styles = ScaledSheet.create({
+  wrapper_all: {
+    flex: 1,
   },
-  nameInput: {
-    height: offset * 2,
-    margin: offset,
-    marginTop: 5,
-    paddingHorizontal: offset,
-    paddingVertical: 0,
-    borderColor: '#111111',
-    borderWidth: 1,
-    fontSize: offset,
+  wrapper_header: {
+    width,
+    height: '190@vs',
+    backgroundColor: '#0F192B',
+    zIndex: 2,
   },
-  buttonText: {
-    marginLeft: offset,
-    fontSize: 42,
-  },
-  buttonLogin: {
-    width: 300,
-    height: 40,
-    backgroundColor: '#2196F3',
-    margin: 10,
-    marginBottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-  },
-  buttonLogout: {
-    width: 300,
-    height: 40,
-    backgroundColor: '#F88070',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-  },
-  wrapperButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textLogin: {
+  text_header: {
     color: '#fff',
-    fontSize: 15,
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  wrapper_text_header: {
+    marginTop: '40@vs',
+    marginLeft: '20@s',
+  },
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+  },
+  wrapper_info: {
+    marginVertical: '15@vs',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text_hello: {
+    color: '#fff',
+    fontSize: 14,
+    marginBottom: '5@vs',
+  },
+  user_name: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  wrapper_text: {
+    marginLeft: '10@s',
+  },
+  wrapper_ic_edit: {
+    width: 20,
+    height: 20,
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '40@s',
+    marginLeft: '-17@vs',
+  },
+  ic_edit: {
+    width: 15,
+    height: 15,
+  },
+  wrapper_body: {
+    backgroundColor: '#7A858F',
+    alignItems: 'flex-end',
+  },
+  wrapper_logout: {
+    height: '45@vs',
+    width,
+    paddingHorizontal: '20@vs',
+    paddingVertical: '10@s',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    backgroundColor: '#C1C8D9',
+    marginTop: '327@vs',
+  },
+  goto_chat: {
+    height: '45@vs',
+    width,
+    paddingHorizontal: '20@vs',
+    paddingVertical: '10@s',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    backgroundColor: '#C1C8D9',
+  },
+  ic_arrow: {
+    width: 20,
+    height: 20,
+  },
+  text_goto_chat: {
+    color: '#2196F3',
+    fontSize: 18,
+  },
+  text_signout: {
+    color: '#FD282B',
+    fontSize: 18,
   },
 });

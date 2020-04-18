@@ -2,12 +2,14 @@ import React from 'react';
 import {GiftedChat} from 'react-native-gifted-chat'; // 0.3.0
 import PropTypes from 'prop-types';
 import firebaseSvc from '../FirebaseSvc';
+import GLOBAL from './global';
+import {ScaledSheet} from 'react-native-size-matters';
 class Chat extends React.Component {
   constructor(props) {
     super(props);
   }
   static navigationOptions = ({navigation}) => ({
-    title: (navigation.state.params || {}).name || 'Chat!',
+    title: GLOBAL.roomName,
   });
 
   state = {
