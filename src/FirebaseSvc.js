@@ -3,6 +3,7 @@
 import firebase from 'firebase';
 import moment from 'moment';
 import uuid from 'uuid';
+import GLOBAL from './screens/global';
 class FirebaseSvc {
   constructor() {
     if (!firebase.apps.length) {
@@ -137,7 +138,7 @@ class FirebaseSvc {
   }
 
   get ref() {
-    return firebase.database().ref('Messages');
+    return firebase.database().ref(GLOBAL.roomName);
   }
 
   parse = snapshot => {

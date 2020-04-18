@@ -3,6 +3,7 @@
 import React from 'react';
 import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import firebaseSvc from '../FirebaseSvc';
+import GLOBAL from './global.js';
 class Room extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'Room!',
@@ -28,7 +29,8 @@ class Room extends React.Component {
     };
     return user;
   }
-  navigateChatRoom = () => {
+  navigateChatRoom = roomName => {
+    GLOBAL.roomName = roomName;
     this.props.navigation.navigate('ChatRoom123', {user: this._getUser()});
   };
   render() {
@@ -42,7 +44,7 @@ class Room extends React.Component {
         <FlatList
           data={this.state.listRoom}
           renderItem={({item}) => (
-            <TouchableOpacity onPress={() => this.navigateChatRoom()}>
+            <TouchableOpacity onPress={() => this.navigateChatRoom(item.id)}>
               <View style={styles.wrapper_button}>
                 <Text style={styles.button_text}>{item.id}</Text>
               </View>
