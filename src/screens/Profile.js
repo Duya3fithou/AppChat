@@ -13,8 +13,8 @@ import {
   Platform,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import ImageEditor from '@react-native-community/image-editor';
 import FirebaseSvc from '../FirebaseSvc';
+import AsyncStorage from '@react-native-community/async-storage';
 export default class Profile extends React.Component {
   static navigationOptions = {
     title: 'Profile',
@@ -28,8 +28,6 @@ export default class Profile extends React.Component {
   };
 
   onImageUpload = async () => {
-    const {pickerResult} = this.state;
-    //const {status: cameraRollPerm} = await PERMISSIONS(PERMISSIONS.CAMERA_ROLL);
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
@@ -113,8 +111,22 @@ export default class Profile extends React.Component {
     }
   };
 
+  _text = () => {
+    if (this.state.isHide === true) return 'Skip';
+    if (this.state.isHide === false) return 'Goto Chat Room';
+  };
+
+  async removeItemValue(key) {
+    try {
+      await AsyncStorage.removeItem(key);
+      return true;
+    } catch (exception) {
+      return false;
+    }
+  }
   _logout = async user => {
-    await FirebaseDB.onLogout(user);
+    this.removeItemValue('@storage_token');
+    await FirebaseSvc.onLogout(user);
     this.props.navigation.navigate('JoinRoom');
   };
 
@@ -147,7 +159,7 @@ export default class Profile extends React.Component {
             });
           }}>
           <View style={styles.buttonLogin}>
-            <Text style={styles.textLogin}>Skip</Text>
+            <Text style={styles.textLogin}>{this._text()}</Text>
           </View>
         </TouchableOpacity>
 
@@ -197,7 +209,7 @@ const styles = StyleSheet.create({
   buttonLogout: {
     width: 300,
     height: 40,
-    backgroundColor: '#2196F3',
+    backgroundColor: '#F88070',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,

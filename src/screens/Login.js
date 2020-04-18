@@ -10,16 +10,9 @@ import {
   ImageEditor,
 } from 'react-native';
 import FirebaseSvc from '../FirebaseSvc';
-import firebase from 'firebase';
-import {auth, initializeApp, storage} from 'firebase';
-import uuid from 'uuid';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Login extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Login',
-  //   tabBarVisible: false,
-  // };
-
   state = {
     name: 'Duy',
     email: 'Duya3@gmail.com',
@@ -27,6 +20,28 @@ class Login extends React.Component {
     avatar: '',
   };
 
+  storeToken = async () => {
+    try {
+      const token = await FirebaseSvc.getToken();
+      console.log(token);
+      await AsyncStorage.setItem('@storage_token', 'token');
+    } catch (e) {
+      //alert(e);
+    }
+  };
+  getToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@storage_token');
+      if (value !== null) {
+        this.loginSuccess();
+      }
+    } catch (e) {
+      //alert('Error read token');
+    }
+  };
+  componentDidMount() {
+    this.getToken();
+  }
   loginSuccess = () => {
     const info = {
       name: this.state.name,
@@ -34,6 +49,7 @@ class Login extends React.Component {
       avatar: this.state.avatar,
     };
     console.log('login successful, navigate to chat.');
+    this.storeToken();
     this.props.navigation.navigate('Profile', {info});
   };
 

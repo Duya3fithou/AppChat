@@ -25,24 +25,7 @@ class Chat extends React.Component {
       _id: firebaseSvc.uid, // need for gifted-chat
     };
   }
-  storeData = async () => {
-    const value_avatar = this.props.navigation?.getParam('avatar');
-    try {
-      await AsyncStorage.setItem('key_avatar', value_avatar);
-    } catch (e) {
-      alert(e);
-    }
-  };
-  getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('key_avatar');
-      if (value !== null) {
-        this.setState({avatar: value});
-      }
-    } catch (e) {
-      alert(e);
-    }
-  };
+
   render() {
     console.log(this.props.navigation?.getParam('avatar'));
     return (
@@ -57,8 +40,6 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
-    this.storeData();
-    this.getData();
     firebaseSvc.refOn(message =>
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),

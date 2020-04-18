@@ -155,12 +155,33 @@ class FirebaseSvc {
     return message;
   };
 
+  getToken = async () => {
+    await firebase
+      .auth()
+      .currentUser.getIdToken(true)
+      .then(function(idToken) {
+        //console.log(idToken);
+        const id = idToken;
+        console.log(id);
+        return id;
+      })
+      .catch(function(error) {
+        alert('error get token');
+      });
+  };
+
   refOn = callback => {
     this.ref
       .limitToLast(20)
       .on('child_added', snapshot => callback(this.parse(snapshot)));
   };
-
+  getChatRoom = callback => {
+    firebase
+      .database()
+      .ref()
+      .limitToLast(20)
+      .on('child_added', snapshot => callback(this.parse(snapshot)));
+  };
   // send the message to the Backend
   send = messages => {
     for (let i = 0; i < messages.length; i++) {
