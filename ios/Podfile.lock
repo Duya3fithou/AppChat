@@ -19,6 +19,8 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - Permission-PhotoLibrary (2.0.10):
+    - RNPermissions
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
     - FBLazyVector (= 0.61.5)
@@ -182,6 +184,9 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
+  - react-native-image-editor (2.3.0):
+    - React
+    - React-RCTImage
   - react-native-image-picker (2.3.1):
     - React
   - React-RCTActionSheet (0.61.5):
@@ -219,6 +224,8 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
+  - RNCAsyncStorage (1.9.0):
+    - React
   - RNGestureHandler (1.6.0):
     - React
   - RNPermissions (2.0.10):
@@ -235,6 +242,7 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - Permission-PhotoLibrary (from `../node_modules/react-native-permissions/ios/PhotoLibrary.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -246,6 +254,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - "react-native-image-editor (from `../node_modules/@react-native-community/image-editor`)"
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -258,6 +267,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -279,6 +289,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  Permission-PhotoLibrary:
+    :path: "../node_modules/react-native-permissions/ios/PhotoLibrary.podspec"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -297,6 +309,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-image-editor:
+    :path: "../node_modules/@react-native-community/image-editor"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
   React-RCTActionSheet:
@@ -319,6 +333,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNPermissions:
@@ -337,6 +353,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  Permission-PhotoLibrary: e59a7a687e002e8c8c46946c26520934ba85a688
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
@@ -346,6 +363,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
+  react-native-image-editor: 9361a215c3991cafbe5e7f28cbbad6e72c9c2705
   react-native-image-picker: 6a850c41f57f0848d918c2a77aedd7aa272ffa30
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -357,12 +375,13 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
+  RNCAsyncStorage: 453cd7c335ec9ba3b877e27d02238956b76f3268
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
   RNPermissions: 1008d3511fee0e25739cf81c4af0d1b2248f1053
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
   RNScreens: 6053a007667bea81a69087caadf103bba04c032e
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 74b0601cfa60f7a7f153faa7470ba6d4fd92af63
+PODFILE CHECKSUM: 1c8c577b0d4b8e53b3a16d5bbb21241c1189b6a4
 
 COCOAPODS: 1.9.1

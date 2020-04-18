@@ -2,7 +2,6 @@ import React from 'react';
 import {GiftedChat} from 'react-native-gifted-chat'; // 0.3.0
 import PropTypes from 'prop-types';
 import firebaseSvc from '../FirebaseSvc';
-import AsyncStorage from '@react-native-community/async-storage';
 class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -18,16 +17,15 @@ class Chat extends React.Component {
 
   get user() {
     return {
-      name: this.props.navigation?.getParam('info')?.name,
-      email: this.props.navigation?.getParam('info')?.email,
-      avatar: this.state.avatar,
+      name: this.props.navigation?.getParam('user')?.name,
+      email: this.props.navigation?.getParam('user')?.email,
+      avatar: this.props.navigation?.getParam('user')?.avatar,
       id: firebaseSvc.uid,
       _id: firebaseSvc.uid, // need for gifted-chat
     };
   }
 
   render() {
-    console.log(this.props.navigation?.getParam('avatar'));
     return (
       <GiftedChat
         messages={this.state.messages}

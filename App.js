@@ -30,7 +30,18 @@ const ChatRoom = createStackNavigator({
   Room,
   ChatRoom123: Chat,
 });
+ChatRoom.navigationOptions = ({navigation}) => {
+  let tabBarVisible = true;
+  let routeName = navigation.state.routes[navigation.state.index].routeName;
 
+  if (routeName == 'ChatRoom123') {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 const TabNavigator = createBottomTabNavigator(
   {
     Profile: Profile,
